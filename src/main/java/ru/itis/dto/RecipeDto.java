@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.itis.models.Recipe;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,12 +23,21 @@ public class RecipeDto {
 
     private String fileName;
 
+    private Long userId;
+
+    private Long categoryId;
+
+    private Date created;
+
     public static RecipeDto from(Recipe recipe){
         return RecipeDto.builder()
                 .id(recipe.getId())
                 .name(recipe.getName())
+                .userId(recipe.getUser().getId())
+                .categoryId(recipe.getCategory().getId())
                 .description(recipe.getDescription())
                 .fileName(recipe.getFileName())
+                .created(recipe.getCreated())
                 .build();
     }
 

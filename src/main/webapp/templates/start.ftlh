@@ -35,44 +35,41 @@
     </style>
 
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/blog.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/blog.css">
 
 </head>
 <body>
-<form action="<c:url value="/start"/>" method="post" class="form">
+<form action="/start" method="post" class="form">
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-            <c:set var="isAuth"  value="${isAuth}"/>
-            <c:choose>
-                <c:when test="${isAuth=='true'}">
+            <@security.authorize access="isAuthenticated()">
                     <div class="col-4 pt-1">
-                        <a class="link-secondary" href="<c:url value="/signOut"/>">Выйти</a>
+                        <a class="link-secondary" href="/signOut">Выйти</a>
                     </div>
-                </c:when>
-                <c:otherwise>
+            </@security.authorize>
+            <@security.authorize access="! isAuthenticated()">
                     <div class="col-4 pt-1">
-                        <a class="link-secondary" href="<c:url value="/signIn"/>">Войти</a>
+                        <a class="link-secondary" href="/signIn">Войти</a>
                     </div>
-                </c:otherwise>
-            </c:choose>
+            </@security.authorize>
             <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="<c:url value="/start"/>">RecipeSite</a>
+                <a class="blog-header-logo text-dark" href="/start">RecipeSite</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
 
 
-                <c:if test="${isAuth!='true'}">
-                    <a class="btn btn-sm btn-outline-secondary" href="<c:url value="/signUp"/>">Зарегистрироваться</a>
-                </c:if>
+                <@security.authorize access="! isAuthenticated()">
+                    <a class="btn btn-sm btn-outline-secondary" href="/signUp">Зарегистрироваться</a>
+                </@security.authorize>
             </div>
         </div>
     </header>
 
     <div class="nav-scroller py-0 mb-0">
         <header class="blog-header py-3">
-            <a class="p-2 link-secondary" href="<c:url value="/profile"/>">Мой кабинет</a>
-            <a class="p-2 link-secondary" href="<c:url value="/allRecipe"/>">Все рецепты</a>
+            <a class="p-2 link-secondary" href="/profile">Мой кабинет</a>
+            <a class="p-2 link-secondary" href="/allRecipe">Все рецепты</a>
             <a class="p-2 link-secondary" href="https://vk.com/i_videeva">Контакты</a>
         </header>
     </div>

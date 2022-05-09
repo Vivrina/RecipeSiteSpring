@@ -36,11 +36,10 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 
      <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/form-validation.css">
     <title>Title</title>
 </head>
 <body class="bg-light">
-<form action="${pageContext.request.contextPath}/addRecipe" method="post" class="form">
+<form action="/addRecipe" method="post" class="form">
     <div class="container">
         <main>
             <div class="py-5 text-center">
@@ -51,11 +50,8 @@
                 <p class="lead">Скорее добавляйте ваш рецепт!</p>
             </div>
 
-
-
-
             <form action="/addRecipe" method="post">
-                <input type="hidden" id="user" name="user"  value="${user.id_user}">
+
 
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -69,10 +65,9 @@
                     <div class="col-12">
                         <label  class="form-label">Категория</label>
                         <select name="category_id"  id="category_id" required="required" class="form-select" aria-label="Default select example">
-                            <c:forEach items="${categories}" var="category">
+                            <#list category as category>
                                 <option value="${category.id}">${category.name}</option>
-                            </c:forEach>
-
+                            </#list>
                         </select>
                     </div>
                     <div class="col-12">
