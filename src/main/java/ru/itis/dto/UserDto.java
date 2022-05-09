@@ -20,7 +20,7 @@ public class UserDto {
 
     private String name;
 
-    private String passwordHash;
+    private String password;
 
     private String email;
 
@@ -34,7 +34,7 @@ public class UserDto {
         return UserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
-                .passwordHash(user.getPasswordHash())
+                .password(user.getPasswordHash())
                 .email(user.getEmail())
                 .achievement(user.getAchievement())
                 .created(user.getCreated())

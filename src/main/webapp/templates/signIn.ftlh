@@ -8,11 +8,11 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Signin Template · Bootstrap v5.1</title>
 
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-utilities.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
 
 
     <!-- Bootstrap core CSS -->
@@ -35,37 +35,26 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
-    <title>Registration</title>
+    <link href="/resources/css/signin.css" rel="stylesheet">
+
+    <title>Sign In</title>
 </head>
 <body class="text-center">
 <main class="form-signin">
-    <form action="<c:url value="/signUp"/>" method="post" class="form">
-    <%--<p>Sign Up</p>
-    <p>
-        <label for="name">Name<input id="name" type="text" name="name"></label><br>
-        <label for="password">Password<input id="password" type="password" name="password"></label><br>
-        <label for="email">Email<input id="email" type="email" name="email" value=""></label>
-
-        <%--        <p><input type="submit"></p>--%>
-    <%--<p><button type="submit">Зарегистрироваться!</button></p><br>--%>
-    <h1 class="h3 mb-4 fw-normal">Пожалуйста, зарегистрируйтесь</h1>
+    <form action="/signIn" method="post" class="form">
+    <h1 class="h3 mb-4 fw-normal">Пожалуйста, войдите</h1>
     <div class="form-floating">
-        <input type="text" class="form-control" id="name" name="name">
-        <label for="name">Имя</label>
+        <input type="email" class="form-control" id="email" name="email">
+        <label for="email">Email</label>
     </div>
     <div class="form-floating">
         <input type="password" class="form-control" id="password" name="password">
         <label for="password">Пароль</label>
     </div>
-    <div class="form-floating">
-        <input type="email" class="form-control" id="email" name="email">
-        <label for="email">Email</label>
-    </div>
-
-
-
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+    <#if error??>
+    <p><font color="#dc3545">${error}</font> </p>
+    </#if>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
     <p class="mt-3 mb-3 text-muted">&copy; 2021</p>
     </form>
 </main>

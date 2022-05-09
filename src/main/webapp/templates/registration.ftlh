@@ -8,14 +8,14 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Signin Template · Bootstrap v5.1</title>
 
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-utilities.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/form-validation.css">
-    <!--<link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/profile.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/signin.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/blog.css"> -->
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
+    <!--<link rel="stylesheet" type="text/css" href="/resources/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/blog.css"> -->
 
     <!-- Bootstrap core CSS -->
 
@@ -37,20 +37,12 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+    <link href="/resources/css/signin.css" rel="stylesheet">
     <title>Registration</title>
 </head>
 <body class="text-center">
 <main class="form-signin">
-    <form action="<c:url value="/signUp"/>" method="post" class="form">
-    <%--<p>Sign Up</p>
-    <p>
-        <label for="name">Name<input id="name" type="text" name="name"></label><br>
-        <label for="password">Password<input id="password" type="password" name="password"></label><br>
-        <label for="email">Email<input id="email" type="email" name="email" value=""></label>
-
-        <%--        <p><input type="submit"></p>--%>
-    <%--<p><button type="submit">Зарегистрироваться!</button></p><br>--%>
+    <form action="/signUp" method="post" class="form">
     <h1 class="h3 mb-4 fw-normal">Пожалуйста, зарегистрируйтесь</h1>
     <div class="form-floating">
         <input type="text" class="form-control" id="name" name="name">

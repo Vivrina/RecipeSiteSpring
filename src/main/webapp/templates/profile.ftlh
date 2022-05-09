@@ -3,11 +3,11 @@
 <head>
 
 
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-utilities.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
 
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
 

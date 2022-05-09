@@ -11,11 +11,11 @@
 
     <%--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
 
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-utilities.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
 
 
 

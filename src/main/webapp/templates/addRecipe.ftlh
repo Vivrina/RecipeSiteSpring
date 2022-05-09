@@ -8,11 +8,11 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>Checkout example · Bootstrap v5.1</title>
 
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/bootstrap-utilities.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/webapp/resources/css/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
 
 
     <!-- Bootstrap core CSS -->
