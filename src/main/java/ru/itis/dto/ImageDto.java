@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 public class ImageDto {
     private Long id;
 
-
     private Long size;
 
+    private String type;
 
     private String uuidName;
 

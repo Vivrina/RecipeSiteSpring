@@ -1,7 +1,10 @@
 package ru.itis.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import ru.itis.dto.RecipeDto;
 import ru.itis.models.Category;
 import ru.itis.models.Recipe;
@@ -15,11 +18,19 @@ import java.util.List;
 
 
 @Service
-@RequiredArgsConstructor
 public class RecipeServiceImpl implements RecipeService{
-    private final RecipeRepository recipeRepository;
-    private final UserRepository userRepository;
-    private final CategoryRepository categoryRepository;
+
+    @Autowired
+    private RecipeRepository recipeRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ImageService imageService;
 
     @Override
     public Recipe addRecipe(RecipeDto recipeDto) {
@@ -41,5 +52,19 @@ public class RecipeServiceImpl implements RecipeService{
         return recipeRepository.findAll();
     }
 
+    @Override
+    public List<Recipe> findByCategoryId(Long id) {
+        Category category = categoryRepository.getById(id);
+        return recipeRepository.findRecipesByCategory(category);
+    }
 
+    @Override
+    @Transactional
+    public void loadImage(MultipartFile multipart, Long id) {
+        String filename = imageService.upload(multipart);
+
+        Recipe recipe = recipeRepository.getById(id);
+        recipe.setFileName(filename);
+        recipeRepository.save(recipe);
+    }
 }

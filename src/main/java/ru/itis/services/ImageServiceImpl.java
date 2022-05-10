@@ -1,6 +1,8 @@
 package ru.itis.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,53 +22,56 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 
-@RequiredArgsConstructor
 @Service
 public class ImageServiceImpl implements ImageService{
 
-    private final ImageRepository imageRepository;
-    private final UserRepository userRepository;
-    private final RecipeRepository recipeRepository;
+    @Autowired
+    private ImageRepository imageRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RecipeRepository recipeRepository;
+
+    @Value("${storage.path}")
+    private String storagePath;
 
     @Transactional
     @Override
-    public void upload(MultipartFile multipartFile, Image.Type type, Long id) {
-        switch (type){
-            case USER:{
+    public String upload(MultipartFile multipart) {
+        try {
+            String extension = multipart.getOriginalFilename().substring(multipart.getOriginalFilename().lastIndexOf("."));
 
-            }
-            case RECIPE:{
-                Recipe recipe = recipeRepository.findById(id).orElseThrow((Supplier<RuntimeException>) ()
-                        -> new RecipeException("Announcement with id: " + id + " not found"));
-                Image image = loadImage(multipartFile);
-                recipe.setFileName(image.getUuidName());
-                recipeRepository.save(recipe);
-                break;
-            }
-        }
-    }
+            String uuidName = UUID.randomUUID().toString();
 
-    Image loadImage(MultipartFile multipartFile) {
-        try{
-            //String extension = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
+
             Image image = Image.builder()
-                    .size(multipartFile.getSize())
-                    .uuidName(UUID.randomUUID().toString())
+                    .type(multipart.getContentType())
+                    .uuidName(uuidName)
+                    .size(multipart.getSize())
+                    .extension(extension)
                     .build();
-            Files.copy(multipartFile.getInputStream(), Paths.get(image.getUuidName()));
-            return imageRepository.save(image);
+
+            String storageFileName = uuidName + extension;
+            Files.copy(multipart.getInputStream(), Paths.get(storagePath, storageFileName));
+
+            imageRepository.save(image);
+            return image.getUuidName();
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
     }
 
     @Override
-    public void getImage(String uuidName, HttpServletResponse response) {
+    public void addFileToResponse(String uuidName, HttpServletResponse response) {
         Image image = imageRepository.findByUuidName(uuidName).orElseThrow((Supplier<RuntimeException>) ()
                 -> new ImageException("Image with filename: " + uuidName + " not found"));
         response.setContentLength(image.getSize().intValue());
+        response.setContentType(image.getType());
         try {
-            Files.copy(Paths.get(image.getUuidName()),
+            String storageFileName = image.getUuidName() + image.getExtension();
+            Files.copy(Paths.get(storagePath+storageFileName),
                     response.getOutputStream());
             response.flushBuffer();
         } catch (IOException e) {

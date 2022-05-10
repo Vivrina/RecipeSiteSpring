@@ -144,7 +144,7 @@
                     <h4 class="fst-italic">Категории</h4>
                     <ol class="list-unstyled mb-0">
                         <#list categories as category>
-                            <li><a href="/category?id=${category.id}">${category.name}</a></li>
+                            <li><a href="/category/${category.id}">${category.name}</a></li>
                         </#list>
                     </ol>
                 </div>

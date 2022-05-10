@@ -2,6 +2,7 @@ package ru.itis.controllers;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,13 @@ import ru.itis.services.RecipeService;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class RecipeController {
 
-    private final RecipeService recipeService;
+    @Autowired
+    private RecipeService recipeService;
 
-    private final CategoryService categoryService;
+    @Autowired
+    private CategoryService categoryService;
 
     @PostMapping(value = "/addRecipe")
     public ModelAndView addAnnouncement(RecipeDto recipeDto, ModelAndView modelAndView, Authentication authentication) {
@@ -35,7 +37,7 @@ public class RecipeController {
             recipeDto.setUserId(user.getId());
             Recipe recipe = recipeService.addRecipe(recipeDto);
             if(recipe != null) {
-                modelAndView.setViewName("redirect:/image/");
+                modelAndView.setViewName("redirect:/image/upload/"+recipe.getId());
             } else {
                 modelAndView.setViewName("redirect:/profile");
             }

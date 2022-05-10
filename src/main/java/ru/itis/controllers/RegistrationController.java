@@ -14,7 +14,6 @@ import ru.itis.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RequiredArgsConstructor
 @Controller
 public class RegistrationController {
 

@@ -45,15 +45,12 @@
             </div>
             <div class="col-md-6">
                 <label for="id_recipe" class="form-label">Фото блюда</label>
-                <input class="form-control" type="hidden" id="id_recipe" name="id_recipe" value="${recipe}">
-                <input type="file" name="image">
+                <input class="form-control" type="hidden" id="recipe_id" name="recipe_id" value="${recipe_id}">
+                <input type="file" name="multipart" id="multipart">
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Загрузить фото</button>
             </div>
-            <%--<input type="hidden" id="id_recipe" name="id_recipe" value="${recipe}">
-            <input type="file" name="image">
-            <button type="submit" class="btn btn-info">Загрузить фото</button>--%>
         </main>
     </div>
 </form>

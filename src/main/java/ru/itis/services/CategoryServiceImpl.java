@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.exception.CategoryException;
 import ru.itis.models.Category;
@@ -11,9 +12,10 @@ import java.util.function.Supplier;
 
 
 @Service
-@RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService{
-    private final CategoryRepository categoryRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public List<Category> findCategories() {

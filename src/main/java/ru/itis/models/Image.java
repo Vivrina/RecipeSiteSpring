@@ -19,10 +19,11 @@ public class Image {
     private Long id;
 
     private Long size;
-    @JoinColumn(name = "uuid_name")
+
     private String uuidName;
 
-    public enum Type{
-        USER, RECIPE
-    }
+    private String type;
+
+    private String extension;
+
 }

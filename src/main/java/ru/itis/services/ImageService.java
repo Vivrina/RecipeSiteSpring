@@ -6,6 +6,6 @@ import ru.itis.models.Image;
 import javax.servlet.http.HttpServletResponse;
 
 public interface ImageService {
-    void upload(MultipartFile multipartFile, Image.Type type, Long id);
-    void getImage(String uuid_name, HttpServletResponse response);
+    String upload(MultipartFile multipart);
+    void addFileToResponse(String uuid_name, HttpServletResponse response);
 }

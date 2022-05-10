@@ -2,6 +2,7 @@ package ru.itis.controllers;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,32 +19,28 @@ import ru.itis.services.RecipeService;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
-    private final RecipeService recipeService;
-    private final CategoryService categoryService;
+    @Autowired
+    private  RecipeService recipeService;
 
-    @GetMapping(value = "?id="+"{categoryId}")
+    @Autowired
+    private CategoryService categoryService;
+
+    @GetMapping(value = "/{categoryId}")
     public ModelAndView getAllRecipeCategory(@PathVariable("categoryId") Long id, ModelAndView modelAndView, Authentication authentication) {
         if (authentication != null) {
             UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
             User user = details.getUser();
             modelAndView.addObject("user", user);
         }
-        List<Recipe> recipes = new ArrayList<>();
-        for (int i=0; i<recipeService.findRecipes().size(); i++){
-            if(recipeService.findRecipes().get(i).getCategory() == categoryService.getCategory(id) ){
-                recipes.add(recipeService.findRecipes().get(i));
-            }
-
-        }
+        List<Recipe> recipes = recipeService.findByCategoryId(id);
         modelAndView.addObject("recipes", recipes);
 
         List<Category> categories = categoryService.findCategories();
         modelAndView.addObject("categories", categories);
-
+        modelAndView.setViewName("category");
         return modelAndView;
     }
 }
