@@ -35,9 +35,9 @@ public class RecipeController {
             recipeDto.setUserId(user.getId());
             Recipe recipe = recipeService.addRecipe(recipeDto);
             if(recipe != null) {
-                modelAndView.setViewName("redirect:/recipe/" + recipe.getId());
+                modelAndView.setViewName("redirect:/image/");
             } else {
-                modelAndView.setViewName("redirect:/start");
+                modelAndView.setViewName("redirect:/profile");
             }
         }
         return modelAndView;
@@ -48,8 +48,8 @@ public class RecipeController {
         if (authentication == null) {
             modelAndView.setViewName("redirect:/signIn");
         } else {
-            List<Category> categories = categoryService.findCategories();
-            modelAndView.addObject("categories", categories);
+            List<Category> category = categoryService.findCategories();
+            modelAndView.addObject("category", category);
             modelAndView.setViewName("addRecipe");
         }
         return modelAndView;

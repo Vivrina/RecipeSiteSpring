@@ -99,7 +99,7 @@
 
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                        <#if announcement.imagePath??>
+                        <#if recipe.fileName??>
                                     <img src="/image?name=${recipe.fileName}" class="bd-placeholder-img" width="200" height="250">
                                 <#else>
                                 <img class="bd-placeholder-img" width="200" height="250" src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">

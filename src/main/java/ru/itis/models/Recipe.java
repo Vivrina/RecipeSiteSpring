@@ -1,10 +1,7 @@
 package ru.itis.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +10,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"user", "category, likeBy"})
+@EqualsAndHashCode(exclude = {"user", "category, likeBy"})
 @Builder
 @Entity
 public class Recipe {

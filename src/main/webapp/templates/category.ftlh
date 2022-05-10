@@ -32,7 +32,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/allRecipe" method="post" class="form"></form>
+<form action="/category?id=${category.id}" method="post" class="form"></form>
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
@@ -54,14 +54,13 @@
                     <a class="btn btn-sm btn-outline-secondary" href="/signUp">Зарегистрироваться</a>
                 </@security.authorize>
             </div>
-
-
         </div>
     </header>
+
     <div class="row g-5">
         <div class="col-md-12">
             <#list recipes as recipe>
-            <div class="row g-0 border ounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="row g-0 border ounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">${user.name}</strong>
                         <h3 class="mb-0">${recipe.name}</h3>
@@ -78,8 +77,6 @@
                     </div>
                 </div>
             </#list>
-
-
         </div>
     </div>
 

@@ -11,6 +11,7 @@ import ru.itis.repositories.RecipeRepository;
 import ru.itis.repositories.UserRepository;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -34,4 +35,11 @@ public class RecipeServiceImpl implements RecipeService{
                 .build();
         return recipeRepository.save(recipe);
     }
+
+    @Override
+    public List<Recipe> findRecipes() {
+        return recipeRepository.findAll();
+    }
+
+
 }

@@ -56,7 +56,7 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="title" class="form-label">Название</label>
-                        <input required="required" type="text" class="form-control" name="title" id="title">
+                        <input required="required" type="text" class="form-control" name="name" id="name">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Описание (рецепт)</label>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-12">
                         <label  class="form-label">Категория</label>
-                        <select name="category_id"  id="category_id" required="required" class="form-select" aria-label="Default select example">
+                        <select name="categoryId"  id="categoryId" required="required" class="form-select" aria-label="Default select example">
                             <#list category as category>
                                 <option value="${category.id}">${category.name}</option>
                             </#list>

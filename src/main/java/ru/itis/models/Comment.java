@@ -1,15 +1,14 @@
 package ru.itis.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
+@ToString(exclude = {"recipe", "user"})
+@EqualsAndHashCode(exclude = {"recipe", "user"})
 @NoArgsConstructor
 @Builder
 @Entity

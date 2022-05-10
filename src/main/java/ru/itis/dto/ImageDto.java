@@ -20,16 +20,14 @@ public class ImageDto {
 
     private Long size;
 
-    private String fileName;
 
-    private String uuid_name;
+    private String uuidName;
 
     public static ImageDto from(Image image){
         return ImageDto.builder()
                 .id(image.getId())
                 .size(image.getSize())
-                .fileName(image.getFileName())
-                .uuid_name(image.getUuid_name())
+                .uuidName(image.getUuidName())
                 .build();
     }
 

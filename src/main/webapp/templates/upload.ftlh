@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
     <title>Загрузить фото</title>
 </head>
 <body>

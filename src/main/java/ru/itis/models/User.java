@@ -12,6 +12,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"recipes", "favourites"})
+@EqualsAndHashCode(exclude = {"recipes", "favourites"})
 @Builder
 @Entity
 @Table(name = "users")
