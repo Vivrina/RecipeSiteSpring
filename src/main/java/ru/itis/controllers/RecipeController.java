@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import ru.itis.dto.CommentDto;
 import ru.itis.dto.RecipeDto;
 import ru.itis.models.Category;
+import ru.itis.models.Comment;
 import ru.itis.models.Recipe;
 import ru.itis.models.User;
 import ru.itis.security.details.UserDetailsImpl;
 import ru.itis.services.CategoryService;
+import ru.itis.services.CommentService;
 import ru.itis.services.RecipeService;
 
 import java.util.List;
@@ -28,6 +31,9 @@ public class RecipeController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CommentService commentService;
 
     @PostMapping(value = "/addRecipe")
     public ModelAndView addRecipe(RecipeDto recipeDto, ModelAndView modelAndView, Authentication authentication) {
@@ -72,10 +78,32 @@ public class RecipeController {
             modelAndView.setViewName("redirect:/start");
 
         }
-
+        List<Comment> comments = commentService.findByRecipeId(id);
         List<Category> categories = categoryService.findCategories();
+        modelAndView.addObject("comments", comments);
         modelAndView.addObject("categories", categories);
         modelAndView.setViewName("recipe");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/recipe/{recipeId}/addComment")
+    public ModelAndView addComment(@PathVariable("recipeId") Long id, CommentDto commentDto, ModelAndView modelAndView, Authentication authentication) {
+        if (authentication == null){
+            modelAndView.setViewName("redirect:/signIn");
+        } else {
+            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+            User user = details.getUser();
+            commentDto.setUserId(user.getId());
+            if (recipeService.findRecipe(id)!=null){
+                Recipe recipe =recipeService.findRecipe(id);
+                commentDto.setRecipeId(recipe.getId());
+                Comment comment = commentService.addComment(commentDto);
+            } else {
+                modelAndView.setViewName("redirect:/start");
+
+            }
+            modelAndView.setViewName("redirect:/recipe/{recipeId}");
+        }
         return modelAndView;
     }
 
