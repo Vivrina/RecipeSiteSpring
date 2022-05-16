@@ -113,7 +113,9 @@
                                                     <p class="u-text u-text-default u-text-3">Автор: ${recipe.user.name}</p>
                                                     <p class="u-text u-text-default u-text-4">На сайте с ${recipe.user.created}</p>
                                                 </div>
+
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -134,6 +136,16 @@
                 </div>
             </div>
         </section>
+        <div><label  class="form-label">Оцените рецепт пользователя: </label>
+            <select name="value"  id="value"  class="form-select" aria-label="Default select example">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Оценить</button>
+        </div>
         <section class="u-clearfix u-section-2" id="sec-31e6">
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h3 class="u-text u-text-default u-text-1">Комментарии:</h3>
