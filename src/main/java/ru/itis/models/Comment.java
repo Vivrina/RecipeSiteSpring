@@ -25,5 +25,6 @@ public class Comment {
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
+    @Lob
     private String comment;
 }

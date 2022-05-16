@@ -26,11 +26,11 @@ public class StartController {
 
     @GetMapping(value = "/start")
     public ModelAndView getStart(ModelAndView modelAndView, Authentication authentication) {
-        if (authentication != null) {
-            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
-            User user = details.getUser();
-            modelAndView.addObject("user", user);
-        }
+        //if (authentication != null) {
+//            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+//            User user = details.getUser();
+//            modelAndView.addObject("user", user);
+        //}
 
         List<Recipe> recipes = recipeService.findRecipes();
         List<Recipe> recipesTwo = new ArrayList<>();
@@ -52,11 +52,11 @@ public class StartController {
 
     @GetMapping(value = "/allRecipe")
     public ModelAndView getAllRecipe(ModelAndView modelAndView, Authentication authentication) {
-        if (authentication != null) {
-            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
-            User user = details.getUser();
-            modelAndView.addObject("user", user);
-        }
+//        if (authentication != null) {
+//            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+//            User user = details.getUser();
+//            modelAndView.addObject("user", user);
+//        }
 
         List<Recipe> recipes = recipeService.findRecipes();
         modelAndView.addObject("recipes", recipes);

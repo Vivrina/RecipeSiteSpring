@@ -21,6 +21,7 @@ public class Recipe {
 
     private String name;
 
+    @Lob
     private String description;
 
     private Date created;

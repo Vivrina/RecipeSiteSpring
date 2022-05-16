@@ -8,7 +8,18 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
-
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.min.css.map">
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
 
 

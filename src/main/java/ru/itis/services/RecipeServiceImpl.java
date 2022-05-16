@@ -15,6 +15,7 @@ import ru.itis.repositories.UserRepository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -52,6 +53,18 @@ public class RecipeServiceImpl implements RecipeService{
         return recipeRepository.findAll();
     }
 
+    @Transactional
+    @Override
+    public Recipe findRecipe(Long id) {
+         if (recipeRepository.findRecipeById(id).isPresent()){
+        return  recipeRepository.findRecipeById(id).get();
+         } else {
+             return null;
+         }
+
+    }
+
+    @Transactional
     @Override
     public List<Recipe> findByCategoryId(Long id) {
         Category category = categoryRepository.getById(id);

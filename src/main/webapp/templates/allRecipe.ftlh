@@ -9,7 +9,18 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/form-validation.css">
-
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-grid.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-reboot.min.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.css.map">
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-utilities.min.css.map">
 
 
     <style>
@@ -63,7 +74,7 @@
             <#list recipes as recipe>
             <div class="row g-0 border ounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">${user.name}</strong>
+                        <strong class="d-inline-block mb-2 text-success">${recipe.user.name}</strong>
                         <h3 class="mb-0">${recipe.name}</h3>
                         <div class="mb-1 text-muted">${recipe.created}</div>
                         <p class="mb-auto">${recipe.description}</p>

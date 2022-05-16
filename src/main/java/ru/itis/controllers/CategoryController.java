@@ -30,11 +30,11 @@ public class CategoryController {
 
     @GetMapping(value = "/{categoryId}")
     public ModelAndView getAllRecipeCategory(@PathVariable("categoryId") Long id, ModelAndView modelAndView, Authentication authentication) {
-        if (authentication != null) {
-            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
-            User user = details.getUser();
-            modelAndView.addObject("user", user);
-        }
+//        if (authentication != null) {
+//            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+//            User user = details.getUser();
+//            modelAndView.addObject("user", user);
+//        }
         List<Recipe> recipes = recipeService.findByCategoryId(id);
         modelAndView.addObject("recipes", recipes);
 
