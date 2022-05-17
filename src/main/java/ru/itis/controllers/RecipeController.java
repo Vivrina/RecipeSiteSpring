@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.itis.dto.CommentDto;
+import ru.itis.dto.RateDto;
 import ru.itis.dto.RecipeDto;
-import ru.itis.models.Category;
-import ru.itis.models.Comment;
-import ru.itis.models.Recipe;
-import ru.itis.models.User;
+import ru.itis.models.*;
 import ru.itis.security.details.UserDetailsImpl;
 import ru.itis.services.CategoryService;
 import ru.itis.services.CommentService;
+import ru.itis.services.RateService;
 import ru.itis.services.RecipeService;
 
 import java.util.List;
@@ -34,6 +33,9 @@ public class RecipeController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private RateService rateService;
 
     @PostMapping(value = "/addRecipe")
     public ModelAndView addRecipe(RecipeDto recipeDto, ModelAndView modelAndView, Authentication authentication) {
@@ -66,18 +68,39 @@ public class RecipeController {
     }
     @GetMapping(value = "recipe/{recipeId}")
     public ModelAndView getRecipe(@PathVariable("recipeId") Long id,ModelAndView modelAndView, Authentication authentication) {
-//        if (authentication != null) {
-//            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
-//            User user = details.getUser();
-//            modelAndView.addObject("user", user);
-//        }
         if (recipeService.findRecipe(id)!=null){
             Recipe recipe =recipeService.findRecipe(id);
+            if (authentication != null) {
+                System.out.println("В аккаунте");
+                UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+                User user = details.getUser();
+                modelAndView.addObject("user", user);
+                int rateValue = 0;
+                int count = 0;
+                for (Rate rate : user.getRates()){
+                    if(rate.getRecipe().getId().equals(recipe.getId())){
+                        rateValue = rate.getValue();
+                        count++;
+                        break;
+                    }
+                }
+                if(count == 0){
+                    System.out.println("Нет оценок");
+                    modelAndView.addObject("isRated", true);
+                } else {
+                    System.out.println("Есть оценки");
+                    modelAndView.addObject("rateValue", rateValue);
+                }
+            }else {
+                System.out.println("Не в аккаунте");
+            }
             modelAndView.addObject("recipe", recipe);
         } else {
             modelAndView.setViewName("redirect:/start");
 
         }
+
+
         List<Comment> comments = commentService.findByRecipeId(id);
         List<Category> categories = categoryService.findCategories();
         modelAndView.addObject("comments", comments);
@@ -98,6 +121,28 @@ public class RecipeController {
                 Recipe recipe =recipeService.findRecipe(id);
                 commentDto.setRecipeId(recipe.getId());
                 Comment comment = commentService.addComment(commentDto);
+            } else {
+                modelAndView.setViewName("redirect:/start");
+
+            }
+            modelAndView.setViewName("redirect:/recipe/{recipeId}");
+        }
+        return modelAndView;
+    }
+
+
+    @PostMapping(value = "/recipe/{recipeId}/rate")
+    public ModelAndView addValueRate(@PathVariable("recipeId") Long id, RateDto rateDto, ModelAndView modelAndView, Authentication authentication) {
+        if (authentication == null){
+            modelAndView.setViewName("redirect:/signIn");
+        } else {
+            UserDetailsImpl details = (UserDetailsImpl) authentication.getDetails();
+            User user = details.getUser();
+            rateDto.setUserId(user.getId());
+            if (recipeService.findRecipe(id)!=null){
+                Recipe recipe =recipeService.findRecipe(id);
+                rateDto.setRecipeId(recipe.getId());
+                Rate rate = rateService.addRate(rateDto);
             } else {
                 modelAndView.setViewName("redirect:/start");
 

@@ -136,6 +136,8 @@
                 </div>
             </div>
         </section>
+        <#if isRated??>
+        <form action="/recipe/${recipeId}/rate" method="post">
         <div><label  class="form-label">Оцените рецепт пользователя: </label>
             <select name="value"  id="value"  class="form-select" aria-label="Default select example">
                 <option value="1">1</option>
@@ -146,6 +148,10 @@
             </select>
             <button type="submit" class="btn btn-primary">Оценить</button>
         </div>
+        </form>
+        <#else>
+            <label  class="form-label">Вы поставили оценку: ${rateValue} </label>
+        </#if>
         <section class="u-clearfix u-section-2" id="sec-31e6">
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h3 class="u-text u-text-default u-text-1">Комментарии:</h3>
